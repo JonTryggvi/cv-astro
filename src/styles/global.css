@@ -186,9 +186,19 @@ img {
 
 .shot {
   width: 100%;
+  height: auto;
   aspect-ratio: 1;
   background: #414143;
   object-fit: cover;
+  object-position: 50% 22%;
+  clip-path: polygon(0 8%, 100% 0, 100% 100%, 0 100%);
+  animation: wipe 1s cubic-bezier(0.2, 0.9, 0.2, 1) backwards;
+  animation-delay: 0.5s;
+  transition: clip-path 0.6s cubic-bezier(0.3, 1.4, 0.5, 1), transform 0.6s cubic-bezier(0.3, 1.6, 0.5, 1);
+}
+/* placeholder (no headshot): centre the initials. Only the div needs flex —
+   putting display:flex on the <img> breaks aspect-ratio sizing. */
+.shot--placeholder {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -196,12 +206,6 @@ img {
   font-weight: 700;
   font-size: 56px;
   color: var(--ash);
-  object-fit: cover;
-  object-position: 50% 22%;
-  clip-path: polygon(0 8%, 100% 0, 100% 100%, 0 100%);
-  animation: wipe 1s cubic-bezier(0.2, 0.9, 0.2, 1) backwards;
-  animation-delay: 0.5s;
-  transition: clip-path 0.6s cubic-bezier(0.3, 1.4, 0.5, 1), transform 0.6s cubic-bezier(0.3, 1.6, 0.5, 1);
 }
 .shot:hover { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); transform: rotate(-1.5deg) scale(1.03); }
 

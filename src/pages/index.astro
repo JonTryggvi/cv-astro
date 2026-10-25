@@ -52,7 +52,7 @@ const references = cv.references ?? [];
           alt={meta.headshot.alt || name}
         />
       ) : (
-        <div class="shot" aria-hidden="true">{initials}</div>
+        <div class="shot shot--placeholder" aria-hidden="true">{initials}</div>
       )}
       {intro && <p class="intro-text">{intro}</p>}
       <div class="intro-contact">
