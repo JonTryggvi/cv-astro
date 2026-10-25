@@ -46,7 +46,7 @@ const references = cv.references ?? [];
       {meta.headshot?.url ? (
         <img
           class="shot"
-          src={meta.headshot.medium || meta.headshot.url}
+          src={meta.headshot.large || meta.headshot.url}
           width={meta.headshot.width}
           height={meta.headshot.height}
           alt={meta.headshot.alt || name}

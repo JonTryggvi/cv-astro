@@ -196,6 +196,8 @@ img {
   font-weight: 700;
   font-size: 56px;
   color: var(--ash);
+  object-fit: cover;
+  object-position: 50% 22%;
   clip-path: polygon(0 8%, 100% 0, 100% 100%, 0 100%);
   animation: wipe 1s cubic-bezier(0.2, 0.9, 0.2, 1) backwards;
   animation-delay: 0.5s;
@@ -396,7 +398,8 @@ img {
     align-items: center;
     gap: 24px 32px;
   }
-  .shot { width: 200px; }
+  /* row layout: pin a square so the img doesn't stretch to its natural height */
+  .shot { width: 200px; height: 200px; aspect-ratio: auto; align-self: flex-start; }
   .intro-text { flex: 1 1 320px; }
   .intro-contact { flex-basis: 100%; }
 }
@@ -410,7 +413,7 @@ img {
   .page-title { font-size: 84px; }
   .cv-body { padding: 0 var(--gutter) 80px; }
   .intro { flex-direction: column; align-items: flex-start; }
-  .shot { width: 100%; max-width: 280px; }
+  .shot { width: 100%; max-width: 280px; height: auto; aspect-ratio: 1 / 1; align-self: stretch; }
   .chapters { gap: 64px; }
   .chapter-title { font-size: 40px; }
   .skills-grid { grid-template-columns: 1fr; gap: 28px; }
