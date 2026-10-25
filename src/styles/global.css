@@ -311,10 +311,8 @@ img {
 .work-list { display: flex; flex-direction: column; }
 .wk {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 8px 24px;
+  flex-direction: column;
+  gap: 8px;
   padding: 24px 16px;
   border-top: 1px solid var(--rule);
   background: linear-gradient(var(--photo), var(--photo)) 0 100% / 100% 0 no-repeat;
@@ -322,6 +320,13 @@ img {
 }
 .wk:hover,
 .wk:focus-visible { background-size: 100% 100%; color: var(--basalt); }
+.wk-head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px 24px;
+}
 .wk-name {
   font-family: var(--ui);
   font-weight: 700;
@@ -332,6 +337,15 @@ img {
 .wk:hover .wk-name { transform: translateX(16px); }
 .wk-kind { font-size: 20px; color: var(--ash); transition: color 0.3s; }
 .wk:hover .wk-kind { color: var(--basalt); }
+.wk-summary {
+  margin: 0;
+  max-width: 70ch;
+  font-size: 18px;
+  line-height: 1.45;
+  color: var(--ash);
+  transition: color 0.3s;
+}
+.wk:hover .wk-summary { color: var(--basalt); }
 
 /* references */
 .quote {

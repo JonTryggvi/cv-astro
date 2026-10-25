@@ -101,16 +101,19 @@ const references = cv.references ?? [];
           <div class="work-list">
             {work.map((w) => {
               const kind = w.role || w.client || periodLabel(w.period_from, w.period_to);
+              const inner = (
+                <>
+                  <div class="wk-head">
+                    <span class="wk-name">{w.title}</span>
+                    <span class="wk-kind">{kind}</span>
+                  </div>
+                  {w.summary && <p class="wk-summary">{w.summary}</p>}
+                </>
+              );
               return w.link ? (
-                <a class="wk" href={w.link} target="_blank" rel="noopener">
-                  <span class="wk-name">{w.title}</span>
-                  <span class="wk-kind">{kind}</span>
-                </a>
+                <a class="wk" href={w.link} target="_blank" rel="noopener">{inner}</a>
               ) : (
-                <div class="wk">
-                  <span class="wk-name">{w.title}</span>
-                  <span class="wk-kind">{kind}</span>
-                </div>
+                <div class="wk">{inner}</div>
               );
             })}
           </div>
