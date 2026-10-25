@@ -1,0 +1,25 @@
+---
+import type { Social } from '../lib/cv';
+
+interface Props {
+  email: string;
+  social: Social[];
+}
+
+const { email, social } = Astro.props;
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <span>© {year} Jón Tryggvi Unnarsson</span>
+  {email && (
+    <a class="footer-mail" href={`mailto:${email}`}>{email}</a>
+  )}
+  {social.length > 0 && (
+    <span class="social">
+      {social.map((s) => (
+        <a href={s.url} rel="me noopener" target="_blank">{s.network}</a>
+      ))}
+    </span>
+  )}
+</footer>

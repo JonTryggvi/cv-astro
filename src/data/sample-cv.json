@@ -1,0 +1,116 @@
+{
+  "meta": {
+    "name": "Jón Tryggvi",
+    "fullname": "Jón Tryggvi Unnarsson",
+    "headshot": null,
+    "short_intro": "Icelandic web developer who builds WordPress and WooCommerce stores and the middleware that wires them to ERPs and payment services — with music and photography on the side.",
+    "unijonlink": "https://jontryggvi.is",
+    "contact": {
+      "address": "",
+      "city": "Reykjavík",
+      "tel": "",
+      "email": "jontryggvi@jontryggvi.is"
+    },
+    "social": [
+      { "network": "LinkedIn", "url": "https://www.linkedin.com/in/jontryggvi" },
+      { "network": "Instagram", "url": "https://www.instagram.com/jontryggvi" },
+      { "network": "Facebook", "url": "https://www.facebook.com/jontryggvi" }
+    ]
+  },
+  "skills": [
+    { "skill": "Theme and plugin development", "group": "WordPress and WooCommerce" },
+    { "skill": "Performance and caching", "group": "WordPress and WooCommerce" },
+    { "skill": "Breakdance and ACF", "group": "WordPress and WooCommerce" },
+    { "skill": "Middleware and ERP connectivity", "group": "Integration" },
+    { "skill": "REST and custom endpoints", "group": "Integration" },
+    { "skill": "Payment and shipping gateways", "group": "Integration" },
+    { "skill": "Svelte and Astro", "group": "Front end" },
+    { "skill": "JavaScript and TypeScript", "group": "Front end" },
+    { "skill": "Modern CSS and motion", "group": "Front end" },
+    { "skill": "Icelandic", "group": "Languages" },
+    { "skill": "English", "group": "Languages" },
+    { "skill": "Spanish", "group": "Languages" }
+  ],
+  "work": [
+    {
+      "id": 1,
+      "title": "Regluvörður",
+      "role": "WordPress plugin",
+      "client": "Avista",
+      "period_from": "2024",
+      "period_to": "",
+      "summary": "A compliance plugin with a one-click auto-updater driven by GitHub Releases.",
+      "tech": ["PHP", "WordPress", "GitHub Actions"],
+      "link": "",
+      "body": "",
+      "thumbnail": null
+    },
+    {
+      "id": 2,
+      "title": "ERP middleware",
+      "role": "Integration",
+      "client": "Retail client",
+      "period_from": "2023",
+      "period_to": "",
+      "summary": "Middleware syncing WooCommerce orders and stock with a back-office ERP.",
+      "tech": ["PHP", "REST", "WooCommerce"],
+      "link": "",
+      "body": "",
+      "thumbnail": null
+    },
+    {
+      "id": 3,
+      "title": "jontryggvi.is",
+      "role": "Personal site",
+      "client": "",
+      "period_from": "2026",
+      "period_to": "",
+      "summary": "A redesigned personal site with a static CV and Tetris on the side.",
+      "tech": ["Astro", "WordPress", "CSS"],
+      "link": "https://jontryggvi.is",
+      "body": "",
+      "thumbnail": null
+    }
+  ],
+  "experience": [
+    {
+      "id": 1,
+      "title": "Web developer",
+      "role": "Web developer",
+      "org": "Avista",
+      "period_from": "2019",
+      "period_to": "",
+      "description": "Builds and maintains WordPress and WooCommerce sites, and the integrations that connect them to ERPs, payment and shipping services."
+    },
+    {
+      "id": 2,
+      "title": "Freelance developer",
+      "role": "Freelance developer",
+      "org": "Self-employed",
+      "period_from": "2015",
+      "period_to": "2019",
+      "description": "Delivered websites and small web apps for Icelandic businesses, from design through to deployment and maintenance."
+    }
+  ],
+  "education": [
+    {
+      "id": 1,
+      "title": "Computer science",
+      "qualification": "BSc, Computer Science",
+      "school": "University of Iceland",
+      "period_from": "2011",
+      "period_to": "2015",
+      "note": "Focus on web technologies and software engineering."
+    }
+  ],
+  "references": [
+    {
+      "id": 1,
+      "name": "A. Colleague",
+      "relation": "Team lead, Avista",
+      "quote": "Jón ships reliable integrations and has a good eye for where a build will break under load.",
+      "link": "",
+      "headshot": null
+    }
+  ]
+}

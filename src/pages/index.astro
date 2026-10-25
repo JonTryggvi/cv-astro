@@ -1,0 +1,157 @@
+---
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { getCV, periodLabel, groupSkills } from '../lib/cv';
+
+const cv = await getCV();
+const { meta } = cv;
+
+const name = meta.name || 'Jón Tryggvi';
+const email = meta.contact?.email || 'jontryggvi@jontryggvi.is';
+const intro = meta.short_intro || '';
+
+// Initials for the headshot placeholder when no image is published.
+const initials = name
+  .split(/\s+/)
+  .filter(Boolean)
+  .slice(0, 2)
+  .map((w) => w[0])
+  .join('')
+  .toUpperCase();
+
+// Languages live in the intro column; keep them out of the skills grid.
+const allGroups = groupSkills(cv.skills);
+const languages = allGroups.find((g) => /^lang/i.test(g.name));
+const skillGroups = allGroups.filter((g) => g !== languages);
+
+const experience = cv.experience ?? [];
+const work = cv.work ?? [];
+const education = cv.education ?? [];
+const references = cv.references ?? [];
+---
+
+<Base title={`CV — ${name}`}>
+  <div class="page-head">
+    <Header />
+    <div class="page-title-wrap">
+      <h1 class="page-title" aria-label="CV">
+        <span aria-hidden="true"><span class="ch" style="--i:0">C</span><span class="ch" style="--i:1">V</span></span>
+      </h1>
+    </div>
+  </div>
+
+  <div class="cv-body">
+    <aside class="intro">
+      {meta.headshot?.url ? (
+        <img
+          class="shot"
+          src={meta.headshot.medium || meta.headshot.url}
+          width={meta.headshot.width}
+          height={meta.headshot.height}
+          alt={meta.headshot.alt || name}
+        />
+      ) : (
+        <div class="shot" aria-hidden="true">{initials}</div>
+      )}
+      {intro && <p class="intro-text">{intro}</p>}
+      <div class="intro-contact">
+        <a href={`mailto:${email}`}>{email}</a>
+        {languages && languages.items.length > 0 && (
+          <span class="muted">{languages.items.join(', ')}</span>
+        )}
+      </div>
+    </aside>
+
+    <div class="chapters">
+      {experience.length > 0 && (
+        <section>
+          <h2 class="chapter-title is-web">Experience</h2>
+          <div class="rows">
+            {experience.map((job) => (
+              <div class="row">
+                <div class="row-date">{periodLabel(job.period_from, job.period_to)}</div>
+                <div class="row-main">
+                  <h3>{[job.role || job.title, job.org].filter(Boolean).join(', ')}</h3>
+                  {job.description && <p>{job.description}</p>}
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {skillGroups.length > 0 && (
+        <section>
+          <h2 class="chapter-title is-music">Skills</h2>
+          <div class="skills-grid">
+            {skillGroups.map((group) => (
+              <div class="skill-group">
+                <h3>{group.name}</h3>
+                <p>{group.items.join(', ')}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {work.length > 0 && (
+        <section>
+          <h2 class="chapter-title is-photo">Work</h2>
+          <div class="work-list">
+            {work.map((w) => {
+              const kind = w.role || w.client || periodLabel(w.period_from, w.period_to);
+              return w.link ? (
+                <a class="wk" href={w.link} target="_blank" rel="noopener">
+                  <span class="wk-name">{w.title}</span>
+                  <span class="wk-kind">{kind}</span>
+                </a>
+              ) : (
+                <div class="wk">
+                  <span class="wk-name">{w.title}</span>
+                  <span class="wk-kind">{kind}</span>
+                </div>
+              );
+            })}
+          </div>
+        </section>
+      )}
+
+      {education.length > 0 && (
+        <section>
+          <h2 class="chapter-title">Education</h2>
+          <div class="rows">
+            {education.map((ed) => (
+              <div class="row">
+                <div class="row-date">{periodLabel(ed.period_from, ed.period_to)}</div>
+                <div class="row-main">
+                  <h3>{[ed.qualification || ed.title, ed.school].filter(Boolean).join(', ')}</h3>
+                  {ed.note && <p>{ed.note}</p>}
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {references.length > 0 && (
+        <section>
+          <h2 class="chapter-title">References</h2>
+          {references.map((ref) => (
+            <blockquote class="quote">
+              {ref.quote}
+              <footer>{[ref.name, ref.relation].filter(Boolean).join(', ')}</footer>
+            </blockquote>
+          ))}
+        </section>
+      )}
+
+      <section>
+        <h2 class="chapter-title">Contact</h2>
+        <a class="mail" href={`mailto:${email}`}>{email}</a>
+      </section>
+    </div>
+  </div>
+
+  <Footer email={email} social={meta.social ?? []} />
+</Base>
